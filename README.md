@@ -48,13 +48,24 @@ Edit `app/.env` with your credentials:
 GEMINI_API_KEY=your-gemini-api-key
 MY_EMAIL=your-email@gmail.com
 APP_PASSWORD=your-gmail-app-password
-SQLITE_DB_PATH=ai_news_aggregator.db
 ```
 
 5. **Run the aggregator**
 ```bash
 python main.py
 ```
+
+## 🔄 How It Works
+
+```
+1. SCRAPE → Fetch articles from OpenAI, Anthropic blogs & YouTube channels
+2. PROCESS → Extract transcripts & convert content to markdown
+3. DIGEST → AI generates concise summaries using Gemini
+4. RANK → AI scores articles (0-10) based on your profile
+5. EMAIL → Top 10 articles sent to your inbox
+```
+
+**Pipeline**: `Scrapers → Processors → Digest Agent → Curator Agent → Email Agent → Gmail`
 
 ## 📋 Configuration
 
@@ -71,15 +82,6 @@ YOUTUBE_CHANNELS = [
     "UCawZsQWqfGSbCI5yjkdVkTA",  # Matthew Berman
 ]
 ```
-
-## 🔧 How It Works
-
-1. **Scraping**: Fetches latest content from configured sources (last 24 hours)
-2. **Processing**: Extracts transcripts and converts markdown to structured data
-3. **Digest Creation**: AI generates concise summaries for each article
-4. **Ranking**: Curator agent ranks articles based on user profile (0-10 score)
-5. **Email Generation**: Creates personalized email with top 10 articles
-6. **Delivery**: Sends digest via Gmail SMTP
 
 ## 🌐 Deploy to Render
 
