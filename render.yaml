@@ -1,0 +1,21 @@
+services:
+  - type: cron
+    name: daily-digest-job
+    env: docker
+    dockerfilePath: ./Dockerfile
+    schedule: "0 0 * * *"
+    dockerCommand: python main.py
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: MY_EMAIL
+        sync: false
+      - key: APP_PASSWORD
+        sync: false
+      - key: SQLITE_DB_PATH
+        value: /data/ai_news_aggregator.db
+    disk:
+      name: ai-news-data
+      mountPath: /data
+      sizeGB: 1
+
