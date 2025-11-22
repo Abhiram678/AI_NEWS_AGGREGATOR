@@ -12,10 +12,4 @@ services:
         sync: false
       - key: APP_PASSWORD
         sync: false
-      - key: SQLITE_DB_PATH
-        value: /data/ai_news_aggregator.db
-    disk:
-      name: ai-news-data
-      mountPath: /data
-      sizeGB: 1
 
