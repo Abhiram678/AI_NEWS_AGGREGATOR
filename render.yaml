@@ -1,10 +1,10 @@
 services:
-  - type: cron
-    name: daily-digest-job
-    env: docker
-    dockerfilePath: ./Dockerfile
-    schedule: "0 0 * * *"
-    dockerCommand: python main.py
+  - type: web
+    name: ai-news-aggregator
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
     envVars:
       - key: GEMINI_API_KEY
         sync: false
